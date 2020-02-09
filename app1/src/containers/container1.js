@@ -1,57 +1,29 @@
 import React, { Component } from 'react';
-import Component1 from '../functional/component1';
 
 class Container1 extends Component {
 
+	arr1 = [
+		{id: 1, text: '1', number : 1},
+		{id: 2, text: '2', number : 2},
+		{id: 3, text: '3', number : 3},
+		{id: 4, text: '4', number : 4},
+		{id: 5, text: '5', number : 5},
+	];
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			stateProp1: 'Our initial state prop 1',
-			stateProp2: 5
-		}
-	}
-
-	// Wrong
-	// changeState = () => {
-	// 	this.setState.stateProp1 = 'New State';
-	// }
-
-	// Can also do this
-	// this.setState({
-	// 	stateProp1: this.state.stateProp2 + 1
-	// }); 
-
-	// Correct
-	changeState = () => {
-		this.setState((prevState, props) => ({
-			stateProp2: prevState.stateProp2 + 1,
-			stateProp1: this.state.stateProp1 + ' L '
-		})
-		);
-	}
-
-	changeState2 = () => {
-		this.setState({
-			stateProp1: this.state.stateProp1 + ' L '
-		});
-	}
+	renderListItem = (props) => (
+		<div>
+			{ props.item.id }
+			{ props.item.text }
+			{ props.item.number }
+		</div>
+	)
 
 	render() {
 		return (
 			<div>
-				Container Component1: 
-				<div>
-					<button onClick={() => this.changeState2()}>Change State 2</button>
-					{this.state.stateProp1}
-				</div>
-
-				<div>
-					<button onClick={() => this.changeState()}>Change State</button>
-					{this.state.stateProp2}
-				</div>
-
-				<Component1 prop1={this.state.stateProp1}/>
+				{this.arr1.map(item => (
+					<this.renderListItem key={item.id} item={item} />	
+				))}
 			</div>
 		)
 	}

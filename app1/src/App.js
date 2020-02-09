@@ -23,16 +23,7 @@ class App extends Component {
   render() {
       return (
         <div className="App">
-          <div>
-            React
-          </div>
-          <div>
-            Div 1
-          </div>
-          <div>
-            Div 2
-          </div>
-          {this.renderFunction1()}
+          <Container1/>
         </div>
       );
   }
