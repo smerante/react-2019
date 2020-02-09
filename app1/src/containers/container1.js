@@ -10,9 +10,23 @@ class Container1 extends Component {
 		}
 	}
 
+	// Wrong
+	// changeState = () => {
+	// 	this.setState.stateProp1 = 'New State';
+	// }
+
+	// Correct
+	changeState = () => {
+		this.setState({ stateProp1: 'New State' });
+	}
+
 	render() {
 		return (
 			<div>
+				<button onClick={() => this.changeState()}>Change State</button>
+
+				{/* Not reccomended */}
+				<button onClick={() => this.setState({ stateProp1: 'New State' })}>Change State 2</button>
 				{ this.state.stateProp1 }
 			</div>
 		)
