@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Component1 from '../functional/component1';
 
 class Container1 extends Component {
 
@@ -24,17 +25,33 @@ class Container1 extends Component {
 	// Correct
 	changeState = () => {
 		this.setState((prevState, props) => ({
-			stateProp1: prevState.stateProp2 + 1
+			stateProp2: prevState.stateProp2 + 1,
+			stateProp1: this.state.stateProp1 + ' L '
 		})
-		); 
+		);
+	}
+
+	changeState2 = () => {
+		this.setState({
+			stateProp1: this.state.stateProp1 + ' L '
+		});
 	}
 
 	render() {
 		return (
 			<div>
-				<button onClick={() => this.changeState()}>Change State</button>
+				Container Component1: 
+				<div>
+					<button onClick={() => this.changeState2()}>Change State 2</button>
+					{this.state.stateProp1}
+				</div>
 
-				{this.state.stateProp1}
+				<div>
+					<button onClick={() => this.changeState()}>Change State</button>
+					{this.state.stateProp2}
+				</div>
+
+				<Component1 prop1={this.state.stateProp1}/>
 			</div>
 		)
 	}
