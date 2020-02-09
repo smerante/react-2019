@@ -11,3 +11,7 @@
 # L10: Slides
 
     https://github.com/iqbal125/react_course_ppt/blob/master/Modern%20React%20PP.pdf
+
+$ L12: Create app 
+    
+        npx create-react-app "app1"
