@@ -2,31 +2,40 @@ import React, { Component } from 'react';
 
 class Container1 extends Component {
 
-	arr1 = [
-		{id: 1, text: '1', number : 1},
-		{id: 2, text: '2', number : 2},
-		{id: 3, text: '3', number : 3},
-		{id: 4, text: '4', number : 4},
-		{id: 5, text: '5', number : 5},
-	];
+	// To implement forms without es6 arrow functions
+	constructor(props){
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
 
-	renderListItem = (props) => (
-		<div>
-			{ props.item.id }
-			{ props.item.text }
-			{ props.item.number }
-		</div>
-	)
+	state = {
+		value: ''
+	}
+
+	handleChange = (event) => {
+	this.setState({ value: event.target.value });
+	}
+
+	// To implement forms without es6 arrow functions
+	handleSubmit(event){
+		event.preventDefault();
+		console.warn(this.state.value);
+	}
 
 	render() {
 		return (
 			<div>
-				{this.arr1.map(item => (
-					<this.renderListItem key={item.id} item={item} />	
-				))}
+				{ this.state.value }
+				<form onSubmit = {this.handleSubmit}>
+					<label>Name</label>
+					<input id="name" onChange={this.handleChange} type="text" />
+
+					<button type="submit">Submit</button>
+				</form>
 			</div>
 		)
 	}
+
 }
 
 export default Container1;
