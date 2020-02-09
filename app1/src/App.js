@@ -1,37 +1,32 @@
 import React, { Component } from 'react';
+import Container1 from './containers/container1';
+import Component1 from './functional/component1';
 
 class App extends Component {
 
-  state = {
-    counter: 0
-  };
-
-  increment = () => {
-    this.setState({ counter: 5 })
+  renderFunction1 = () => {
+    if(true) {
+      return (
+        <div>
+          Condition 1
+        </div>
+      )
+    } else {
+      return (
+      <div>
+        Condition 2
+      </div>
+      )
+    }
   }
 
   render() {
-
-    return (
-      <div className="App">
-        <button onClick={() => this.increment()}>Button </button>
-        <div>
-          Div 1 {this.state.counter}
+      return (
+        <div className="App">
+          <Container1/>
         </div>
-        <div>
-          Div 2
-        </div>
-        <div>
-          Div 3
-        </div>
-
-      </div>
-    );
+      );
   }
 }
-
-const appInstance = new App();
-
-console.warn(appInstance);
 
 export default App;

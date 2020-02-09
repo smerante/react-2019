@@ -15,3 +15,7 @@
 # L12: Create app 
     
         npx create-react-app "app1"
+
+# Lifecycle 'methods'
+
+    constructor -> render -> componentDidMount -> async calls -> componentWillUnmount
