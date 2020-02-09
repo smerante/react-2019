@@ -6,7 +6,8 @@ class Container1 extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			stateProp1: 'Our initial state prop 1'
+			stateProp1: 'Our initial state prop 1',
+			stateProp2: 5
 		}
 	}
 
@@ -15,9 +16,17 @@ class Container1 extends Component {
 	// 	this.setState.stateProp1 = 'New State';
 	// }
 
+	// Can also do this
+	// this.setState({
+	// 	stateProp1: this.state.stateProp2 + 1
+	// }); 
+
 	// Correct
 	changeState = () => {
-		this.setState({ stateProp1: 'New State' });
+		this.setState((prevState, props) => ({
+			stateProp1: prevState.stateProp2 + 1
+		})
+		); 
 	}
 
 	render() {
@@ -25,9 +34,7 @@ class Container1 extends Component {
 			<div>
 				<button onClick={() => this.changeState()}>Change State</button>
 
-				{/* Not reccomended */}
-				<button onClick={() => this.setState({ stateProp1: 'New State' })}>Change State 2</button>
-				{ this.state.stateProp1 }
+				{this.state.stateProp1}
 			</div>
 		)
 	}
