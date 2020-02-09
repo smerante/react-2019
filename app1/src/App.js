@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Component1 from './functional/component1';
 
 class App extends Component {
 
@@ -9,11 +10,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        { React.createElement(
-          'div',
-          {className: 'app'},
-          obj1.key1
-        ) }
+        <Component1/>
       </div>
     );
   }
