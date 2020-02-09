@@ -4,22 +4,33 @@ import Component1 from './functional/component1';
 
 class App extends Component {
 
-  render() {
-    const obj1 = {
-      key1: 'Some Data'
-    };
+  // Not recommend
+  // render() {
+  //   if(false) {
+  //     return (
+  //       <div className="App">
+  //         Condition 1
+  //       </div>
+  //     );
+  //   }
+  //   else {
+  //     return (
+  //       <div className="App">
+  //         Condition 2
+  //       </div>
+  //     );
+  //   }
+  // }
 
-    return (
-      <div className="App">
-        App1 Comp
-        <div style={{ marginLeft: 16 }}>
-          <Container1 nickname="Samwise" />
+  render() {
+      return (
+        <div className="App">
+          { true 
+            ? <div>Condition 1 {true ? 'a' : 'b'}</div>
+            : <div>Condition 2 {false ? 'a' : 'b'}</div>
+          }
         </div>
-        <div style={{ marginLeft: 16 }}>
-          <Component1 name="sam" age={25} />
-        </div>
-      </div>
-    );
+      );
   }
 }
 
