@@ -12,10 +12,10 @@ class App extends Component {
     return (
       <div className="App">
         App1 Comp
-        <div style={{marginLeft: 16}}>
-          <Container1 nickname="Samwise"/>
+        <div style={{ marginLeft: 16 }}>
+          <Container1 nickname="Samwise" />
         </div>
-        <div style={{marginLeft: 16}}>
+        <div style={{ marginLeft: 16 }}>
           <Component1 name="sam" age={25} />
         </div>
       </div>
