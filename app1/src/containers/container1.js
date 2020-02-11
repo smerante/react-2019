@@ -8,6 +8,8 @@ class Container1 extends Component {
 
 
   render() {
+    const mock_user_input = 'Mock user input';
+
     return (
       <div>
         <button onClick={() => console.warn(this.props)}>Get State</button>
@@ -16,6 +18,7 @@ class Container1 extends Component {
         
         <button onClick={() => this.props.action_creator1()}>Dispatch Action Creator 1</button>
         <button onClick={() => this.props.action_creator2()}>Dispatch Action Creator 2</button>
+        <button onClick={() => this.props.action_creator3(mock_user_input)}>Dispatch Action Creator 3</button>
 
       </div>
     )
@@ -24,7 +27,8 @@ class Container1 extends Component {
 
 function mapStateToProps(state) {
   return {
-    stateProp1: state.stateProp1
+    stateProp1: state.stateProp1,
+    userInput: state.userText
   }
 }
 
@@ -33,7 +37,8 @@ function mapDispatchToProps(dispatch) {
     action1: () => dispatch(ACTIONS.SUCCESS),
     action2: () => dispatch(ACTIONS.FAILURE),
     action_creator1: () => dispatch(ACTIONS.success()),
-    action_creator2: () => dispatch(ACTIONS.failure())
+    action_creator2: () => dispatch(ACTIONS.failure()),
+    action_creator3: (value) => dispatch(ACTIONS.user_input(value))
   }
 }
 
