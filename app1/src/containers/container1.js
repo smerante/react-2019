@@ -1,41 +1,35 @@
 import React, { Component } from 'react';
+import * as ACTIONS from '../store/actions/actions';
+
+import { connect } from 'react-redux';
 
 class Container1 extends Component {
 
-	// To implement forms without es6 arrow functions
-	constructor(props){
-		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
 
-	state = {
-		value: ''
-	}
 
-	handleChange = (event) => {
-	this.setState({ value: event.target.value });
-	}
-
-	// To implement forms without es6 arrow functions
-	handleSubmit(event){
-		event.preventDefault();
-		console.warn(this.state.value);
-	}
-
-	render() {
-		return (
-			<div>
-				{ this.state.value }
-				<form onSubmit = {this.handleSubmit}>
-					<label>Name</label>
-					<input id="name" onChange={this.handleChange} type="text" />
-
-					<button type="submit">Submit</button>
-				</form>
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div>
+        <button onClick={() => console.warn(this.props)}>Get State</button>
+        <button onClick={() => this.props.action1()}>Dispatch Action 1</button>
+        <button onClick={() => this.props.action2()}>Dispatch Action 2</button>
+      </div>
+    )
+  }
 
 }
 
-export default Container1;
+function mapStateToProps(state) {
+  return {
+    stateProp1: state.stateProp1
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    action1: () => dispatch(ACTIONS.SUCCESS),
+    action2: () => dispatch(ACTIONS.FAILURE)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container1);
