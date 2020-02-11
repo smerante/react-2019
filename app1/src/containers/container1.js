@@ -20,6 +20,10 @@ class Container1 extends Component {
         <button onClick={() => this.props.action_creator2()}>Dispatch Action Creator 2</button>
         <button onClick={() => this.props.action_creator3(mock_user_input)}>Dispatch Action Creator 3</button>
 
+        {this.props.userInput ? 
+          <h1>{this.props.userInput}</h1>:
+          <h1>No user text entered</h1>
+        }
       </div>
     )
   }
