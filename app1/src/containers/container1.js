@@ -31,8 +31,8 @@ class Container1 extends Component {
 
 function mapStateToProps(state) {
   return {
-    stateProp1: state.stateProp1,
-    userInput: state.userText
+    stateProp1: state.reducer1.stateProp1,
+    userInput: state.reducer2.userText
   }
 }
 

@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import { Provider } from 'react-redux';
-import Reducer1 from './store/reducers/reducer1';
+import rootReducer from './store/reducers';
 import { createStore } from 'redux';
 
-const store = createStore(Reducer1);
+const store = createStore(rootReducer);
 
 console.log("STORE state:", store.getState());
 ReactDOM.render(
