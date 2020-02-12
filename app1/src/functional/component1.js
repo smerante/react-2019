@@ -2,8 +2,7 @@ import React from 'react';
 
 const Component1 = props => (
     <div>
-        Functional Component1 {props.name} : {props.age}
-        {props.prop1}
+        Functional Component1 {console.warn(props)}
     </div>
 );
 
