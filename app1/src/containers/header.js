@@ -7,16 +7,16 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Link to='/home'>
+        <Link to='/'>
           Home
         </Link>
-        <Link to='/home/component1'>
+        <Link to='/component1'>
           Component1
         </Link>
-        <Link to='/home/component2'>
+        <Link to='/component2'>
           Component2
         </Link>
-        <Link to='/home/component3'>
+        <Link to='/component3'>
           Component3
         </Link>
       </div>
