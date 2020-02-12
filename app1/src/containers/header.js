@@ -4,21 +4,25 @@ import { Link } from 'react-router-dom';
 
 
 class Header extends Component {
+
+  state = {
+    num: [
+      { id: 1 },
+      { id: 2 },
+      { id: 3 }
+    ]
+  }
   render() {
     return (
       <div>
         <Link to='/'>
           Home
         </Link>
-        <Link to='/component1'>
-          Component1
-        </Link>
-        <Link to='/component2'>
-          Component2
-        </Link>
-        <Link to='/component3'>
-          Component3
-        </Link>
+        {this.state.num.map(num =>
+          <Link key={num.id} to={{ pathname: '/component/' + num.id }}>
+            Component {num.id}
+          </Link>
+        )}
       </div>
     )
   }
