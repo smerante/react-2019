@@ -14,4 +14,25 @@ export default class Auth {
     login = () => {
         this.auth0.authorize()
     }
+
+    handleAuth = () => {
+        this.auth0.parseHash((err, authResult) => {
+            if (authResult) {
+                localStorage.setItem('access_token', authResult.accessToken);
+                localStorage.setItem('id_token', authResult.idToken);
+
+                let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+                localStorage.setItem('expiresAt', expiresAt);
+            } else {
+                console.warn('handleAuth error: ', err);
+            }
+        });
+    }
+
+    logout = () => {
+        localStorage.remove('access_token');
+        localStorage.remove('id_token');
+        localStorage.remove('expiresAt');
+    };
+
 }
