@@ -1,4 +1,5 @@
 import auth from 'auth0-js';
+import history from './history';
 
 export default class Auth {
 
@@ -23,6 +24,9 @@ export default class Auth {
 
                 let expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
                 localStorage.setItem('expiresAt', expiresAt);
+                setTimeout(() => {
+                    history.replace('/authCheck')
+                }, 200);
             } else {
                 console.warn('handleAuth error: ', err);
             }
@@ -35,4 +39,8 @@ export default class Auth {
         localStorage.remove('expiresAt');
     };
 
+    isAuthenticated = () => {
+        let expiresAt = JSON.parse(localStorage.getItem('expiresAt'));
+        return new Date().getTime() < expiresAt;
+    }
 }

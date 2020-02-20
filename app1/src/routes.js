@@ -10,6 +10,8 @@ import { Router, Route, Switch } from 'react-router';
 import Header from './containers/header';
 import createBrowserHistory from './utils/history';
 
+import AuthCheck from './utils/auth-check';
+
 const auth = new Auth();
 
 const handleAuth = (props) => {
@@ -29,9 +31,9 @@ class Routes extends Component {
 						<Switch>
 							<Route exact path="/" render={() => <Container1 auth={auth} />} />
 							<Route path="/callback" render={(props) => { handleAuth(props); return <CallBack /> }} />
-
 							{/* Desctructiorization  */}
 							<Route path="/component/:id" render={(props) => <div>Render Test: <Component1 {...props} /></div>} />
+							<Route path="/authcheck" render={() => <div>Rendering auth check <AuthCheck auth={auth} /></div>} />
 						</Switch>
 					</div>
 				</Router>

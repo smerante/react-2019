@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as ACTIONS from '../store/actions/actions';
-import Auth from '../utils/auth';
 
 import { connect } from 'react-redux';
 
@@ -33,7 +32,8 @@ class Container1 extends Component {
 function mapStateToProps(state) {
   return {
     stateProp1: state.reducer1.stateProp1,
-    userInput: state.reducer2.userText
+    userInput: state.reducer2.userText,
+    isAuthenticated: state.authReducer.isAuthenticated
   }
 }
 
