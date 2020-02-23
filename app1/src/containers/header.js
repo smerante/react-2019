@@ -21,6 +21,9 @@ class Header extends Component {
         <Link to='/authcheck'>
           authcheck
         </Link>
+        <Link to='/privateroute'>
+          Private Route
+        </Link>
         {this.state.num.map(num =>
           <Link key={num.id} to={{ pathname: '/component/' + num.id }}>
             Component {num.id}
