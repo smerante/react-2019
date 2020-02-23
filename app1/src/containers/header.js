@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux'
 
 class Header extends Component {
 
@@ -24,6 +24,10 @@ class Header extends Component {
         <Link to='/privateroute'>
           Private Route
         </Link>
+        {!this.props.isAuthenticated
+          ? <button onClick={() => this.props.auth.login()}>Login</button>
+          : <button onClick={() => this.props.auth.logout()}>Logout</button>
+        }
         {this.state.num.map(num =>
           <Link key={num.id} to={{ pathname: '/component/' + num.id }}>
             Component {num.id}
@@ -34,4 +38,13 @@ class Header extends Component {
   }
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return {
+    stateProp1: state.reducer1.stateProp1,
+    userInput: state.reducer2.userText,
+    isAuthenticated: state.authReducer.isAuthenticated
+  }
+}
+
+
+export default connect(mapStateToProps)(Header);

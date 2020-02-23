@@ -38,7 +38,7 @@ class Routes extends Component {
 			<div>
 				<Router history={createBrowserHistory}>
 					<div>
-						<Header />
+						<Header auth={auth} />
 						<Switch>
 							<Route exact path="/" render={() => <Container1 auth={auth} />} />
 							<Route path="/callback" render={(props) => { handleAuth(props); return <CallBack /> }} />

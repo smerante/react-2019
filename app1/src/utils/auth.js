@@ -34,9 +34,11 @@ export default class Auth {
     }
 
     logout = () => {
-        localStorage.remove('access_token');
-        localStorage.remove('id_token');
-        localStorage.remove('expiresAt');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('expiresAt');
+        this.auth0.logout();
+        history.replace('/authCheck')
     };
 
     isAuthenticated = () => {
