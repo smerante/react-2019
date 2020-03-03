@@ -19,3 +19,11 @@
 # Lifecycle 'methods'
 
     constructor -> render -> componentDidMount -> async calls -> componentWillUnmount
+
+#Setup Social Media Login
+In https://manage.auth0.com/ go to connections -> social and edit the connection you'd like with the client id and secret
+
+in console.developers.google.com setup a new project, set auth credentials for web and get the client secret there
+
+In developers.facebook.com setup a new project, quickstart with web and site url: auth0.com
+go to settings and get the auth creds there and secret.
