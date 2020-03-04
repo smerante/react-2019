@@ -31,7 +31,8 @@ function mapStateToProps(state) {
   return {
     stateProp1: state.reducer1.stateProp1,
     userInput: state.reducer2.userText,
-    isAuthenticated: state.authReducer.isAuthenticated
+    isAuthenticated: state.authReducer.isAuthenticated,
+    profile: state.authReducer.profile
   }
 }
 

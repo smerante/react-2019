@@ -14,6 +14,8 @@ import AuthCheck from './utils/auth-check';
 import UnauthRedirect from './functional/unauthredirect';
 import ProtectedRoute from './functional/protectedroutes';
 
+import Profile from './containers/profile';
+
 const auth = new Auth();
 
 const handleAuth = (props) => {
@@ -49,6 +51,7 @@ class Routes extends Component {
 							<Route path="/authcheck" render={() => <div>Rendering auth check <AuthCheck auth={auth} /></div>} />
 
 							<PrivateRoute path="/privateroute" auth={auth} component={ProtectedRoute} />
+							<PrivateRoute path="/profile" auth={auth} component={Profile} />
 
 						</Switch>
 					</div>

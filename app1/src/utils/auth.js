@@ -28,7 +28,7 @@ export default class Auth {
                 this.getProfile();
                 setTimeout(() => {
                     history.replace('/authCheck')
-                }, 200);
+                }, 2000);
             } else {
                 console.warn('handleAuth error: ', err);
             }

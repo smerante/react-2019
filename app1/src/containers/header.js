@@ -21,6 +21,9 @@ class Header extends Component {
         <Link to='/authcheck'>
           authcheck
         </Link>
+        <Link to='/profile'>
+          profile
+        </Link>
         <Link to='/privateroute'>
           Private Route
         </Link>
