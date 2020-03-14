@@ -31,3 +31,11 @@ go to settings and get the auth creds there and secret.
 # React Hooks
 
 Main purpose to allow functional components to read and update state
+
+Wrong:
+
+if(true) {useEffect(()=> { return value}) }
+
+Right:
+
+useEffect(()=> true ? return value : null)
