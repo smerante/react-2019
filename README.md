@@ -39,3 +39,17 @@ if(true) {useEffect(()=> { return value}) }
 Right:
 
 useEffect(()=> true ? return value : null)
+
+## Hooks overview
+
+useState(): 
+Similar to this.setState()
+
+useEffect():
+Similar to componentDidMount(), used to call function automatically
+
+useContext()
+Similar react-redux: used to read and update global context state
+
+useReducer()
+Similar react-redux: used to read and update local state not  global
