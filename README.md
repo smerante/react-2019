@@ -27,3 +27,7 @@ in console.developers.google.com setup a new project, set auth credentials for w
 
 In developers.facebook.com setup a new project, quickstart with web and site url: auth0.com
 go to settings and get the auth creds there and secret.
+
+# React Hooks
+
+Main purpose to allow functional components to read and update state
