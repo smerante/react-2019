@@ -54,3 +54,18 @@ export const remove_profile = () => {
     type: ACTION_TYPES.REMOVE_PROFILE
   }
 }
+
+
+export const user_changed_form = (text) => {
+  return {
+    type: ACTION_TYPES.USER_FORM_CHANGE,
+    payload: text
+  }
+}
+
+export const user_submitted_form = (text) => {
+  return {
+    type: ACTION_TYPES.USER_FORM_SUBMIT,
+    payload: text
+  }
+}
