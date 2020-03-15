@@ -49,17 +49,15 @@ const HooksContainer1 = () => {
         <div>
             React Hooks
             <br />
-            <button style={{margin: '5px'}} onClick={() => incrementValue()}>Incr local state </button>
-            <button style={{margin: '5px'}} onClick={() => decrementValue()}>Decr local value </button>
-            <button style={{margin: '5px'}} onClick={() => changeUseEffectValue()}>Change useEffect value </button>
- 
-            <button style={{margin: '5px'}} onClick={() => handleDispatchTrue()}>Dispatch True </button>
-            <button style={{margin: '5px'}} onClick={() => handleDispatchFalse()}>Dispatch False </button>
+            <button style={{ margin: '5px' }} onClick={() => incrementValue()}>Incr local state </button>
+            <button style={{ margin: '5px' }} onClick={() => decrementValue()}>Decr local value </button>
+            <button style={{ margin: '5px' }} onClick={() => changeUseEffectValue()}>Change useEffect value </button>
+
+            <button style={{ margin: '5px' }} onClick={() => handleDispatchTrue()}>Dispatch True </button>
+            <button style={{ margin: '5px' }} onClick={() => handleDispatchFalse()}>Dispatch False </button>
 
 
-            <button style={{margin: '5px'}} onClick={() => context.incrGlobalValue()}>inc global state</button>
-            <button style={{margin: '5px'}} onClick={() => context.decrGlobalValue()}>inc global state</button>
-            
+            <br />
             <p>Local State: {counter}</p>
             <br />
             <p>Use effect value:
@@ -80,8 +78,22 @@ const HooksContainer1 = () => {
 
             <br />
 
+            <button style={{ margin: '5px' }} onClick={() => context.incrGlobalValue()}>inc global state</button>
+            <button style={{ margin: '5px' }} onClick={() => context.decrGlobalValue()}>inc global state</button>
+
+            <button style={{ margin: '5px' }} onClick={() => context.dispatchContextTrue()}>Dispatch global true</button>
+            <button style={{ margin: '5px' }} onClick={() => context.dispatchContextFalse()}>Dispatch global false</button>
+
             <p>Global State: {context.valueGlobalState}</p>
-            
+
+
+            <br />
+
+            {
+                context.reducerGlobalState ?
+                    <p>state prop 2: true</p> :
+                    <p>state prop 2: false </p>
+            }
 
         </div>
     )
