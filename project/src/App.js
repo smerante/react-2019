@@ -2,6 +2,7 @@ import React, { useState, useReducer } from 'react';
 import Routes from './routes';
 import Context from './utils/context';
 import * as Reducer from './store/hooks_state/hooks-reducer';
+import * as FormsReducer from './store/hooks_state/forms-reducer';
 import * as ACTIONS from './store/actions/actions';
 
 
@@ -10,6 +11,7 @@ import * as ACTIONS from './store/actions/actions';
 const App = () => {
 
   const [stateContextGlobal, dispatchContextGlobal] = useReducer(Reducer.HooksReducer, Reducer.initialState)
+  const [formGlobal, dispatchformGlobal] = useReducer(FormsReducer.FormsReducer, FormsReducer.initialFormState)
 
   const [globalState, setglobalState] = useState(0)
 
@@ -20,7 +22,6 @@ const App = () => {
   const decrementGlobalState = () => {
     setglobalState(globalState - 1);
   }
-
 
 
   const handleContextDispatchTrue = () => {
@@ -35,6 +36,18 @@ const App = () => {
     dispatchContextGlobal(ACTIONS.failure())
   }
 
+
+
+  const handleFormChange = ($event) => {
+    dispatchformGlobal(ACTIONS.user_changed_form($event.target.value))
+  }
+
+  const handleFormSubmit = ($event) => {
+    $event.preventDefault();
+    $event.persist();
+    dispatchformGlobal(ACTIONS.user_submitted_form($event.target.useFormContext.value))
+  }
+
   return (
     <div>
       React
@@ -46,7 +59,12 @@ const App = () => {
 
           reducerGlobalState: stateContextGlobal.stateProp2,
           dispatchContextTrue: () => handleContextDispatchTrue(),
-          dispatchContextFalse: () => handleContextDispatchFalse()
+          dispatchContextFalse: () => handleContextDispatchFalse(),
+
+          user_form_change: formGlobal.user_form_change,
+          user_form_submit: formGlobal.user_form_submit,
+          dispatchFormChange: ($event) => handleFormChange($event),
+          dispatchFormSubmit: ($event) => handleFormSubmit($event),
         }}
       >
         <Routes />

@@ -95,6 +95,23 @@ const HooksContainer1 = () => {
                     <p>state prop 2: false </p>
             }
 
+            <br />
+
+            {
+                context.user_form_change ?
+                    <p>{context.user_form_change}</p> :
+                    <p>form not changed </p>
+            }
+
+
+            <br />
+
+            {
+                context.user_form_submit ?
+                    <p>{context.user_form_submit}</p> :
+                    <p>form not submitted </p>
+            }
+
         </div>
     )
 }

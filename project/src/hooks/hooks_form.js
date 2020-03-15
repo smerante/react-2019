@@ -2,21 +2,24 @@ import React, { useState, useReducer, useContext } from 'react';
 import * as FormsReducer from '../store/hooks_state/forms-reducer';
 import * as ACTIONS from '../store/actions/actions';
 
+import Context from '../utils/context';
+
 const HooksForm = () => {
     const [formChange, setformChange] = useState('');
     const [formSubmit, setformSubmit] = useState('');
 
     const [formState, formDispatch] = useReducer(FormsReducer.FormsReducer, FormsReducer.initialFormState);
 
+    const context = useContext(Context);
 
     const handleFormChange = ($event) => {
         setformChange($event.target.value);
     }
 
     const handleFormSubmit = ($event) => {
+        $event.preventDefault();
         $event.persist();
         setformSubmit($event.target.useState.value);
-        $event.preventDefault();
     }
 
 
@@ -26,10 +29,11 @@ const HooksForm = () => {
 
 
     const handleFormReducerSubmit = ($event) => {
-        $event.persist();
         $event.preventDefault();
+        $event.persist();
         formDispatch(ACTIONS.user_submitted_form($event.target.useFormReducer.value));
     }
+
 
     return (
         <div>
@@ -60,6 +64,21 @@ const HooksForm = () => {
             <h2>React userReducer: </h2>
             <p>Change: {formState.user_form_change}</p>
             <p>Submit: {formState.user_form_submit}</p>
+
+
+
+            <form onSubmit={context.dispatchFormSubmit}>
+                <label>React useContext form:</label>
+                <input
+                    id="useFormContext"
+                    type="text"
+                    onChange={($event) => context.dispatchFormChange($event)} />
+                <button type="submit">Submit Context form</button>
+            </form>
+
+            <h2>React userContext: </h2>
+            <p>Change: {context.user_form_change}</p>
+            <p>Submit: {context.user_form_submit}</p>
         </div>
     )
 }
